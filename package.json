@@ -1,0 +1,70 @@
+{
+  "name": "egg-swagger-decorator",
+  "version": "0.1.6",
+  "description": "using decorator to make router definitions and automatically generate swagger doc for egg.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "egg": {
+    "typescript": true
+  },
+  "eggPlugin": {
+    "name": "swaggerDecorator"
+  },
+  "scripts": {
+    "start": "egg-scripts start --baseDir=./test/fixtures/apps/swagger-decorator-test --title=egg-server-tt",
+    "stop": "egg-scripts stop --title=egg-server-tt",
+    "dev": "egg-bin dev --baseDir=./test/fixtures/apps/swagger-decorator-test -r egg-ts-helper/register",
+    "debug": "egg-bin debug --baseDir=./test/fixtures/apps/swagger-decorator-test -r egg-ts-helper/register",
+    "test-local": "egg-bin test -r egg-ts-helper/register",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "cov": "egg-bin cov -r egg-ts-helper/register",
+    "tsc": "ets --cwd=./test/fixtures/apps/swagger-decorator-test && tsc -p tsconfig.json",
+    "ci": "npm run lint && npm run cov && npm run tsc",
+    "autod": "autod",
+    "lint": "tslint .",
+    "clean": "ets clean",
+    "build": "tsc -p tsconfig_publish.json",
+    "pub": "npm run build && npm publish"
+  },
+  "dependencies": {
+    "class-validator": "^0.13.1",
+    "lodash": "^4.17.5",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.106",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
+    "@types/supertest": "^2.0.0",
+    "autod": "^3.0.1",
+    "autod-egg": "^1.1.0",
+    "egg": "^2.29.4",
+    "egg-bin": "^4.16.2",
+    "egg-ci": "^1.18.0",
+    "egg-mock": "^3.17.0",
+    "egg-scripts": "^2.13.0",
+    "egg-ts-helper": "^1.4.2",
+    "tslib": "^1.9.0",
+    "tslint": "^4.0.0",
+    "typescript": "^4.2.4"
+  },
+  "engines": {
+    "node": ">=8.9.0"
+  },
+  "ci": {
+    "version": "8"
+  },
+  "repository": "http://git.shensz.local/cjfff/egg-swagger-decorator",
+  "eslintIgnore": [
+    "coverage"
+  ],
+  "keywords": [
+    "decorator",
+    "swagger",
+    "egg",
+    "eggPlugin",
+    "egg-plugin"
+  ],
+  "author": "Cjfff",
+  "license": "MIT"
+}
