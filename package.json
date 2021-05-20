@@ -1,6 +1,6 @@
 {
   "name": "@grfe/egg-swagger-decorator",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "using decorator to make router definitions and automatically generate swagger doc for egg.js",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -25,7 +25,7 @@
     "clean": "ets clean",
     "build": "tsc -p tsconfig_publish.json",
     "pub": "npm run build && npm publish",
-    "prepublishonly": "yarn build"
+    "prepare": "yarn build"
   },
   "dependencies": {
     "class-validator": "^0.13.1",
