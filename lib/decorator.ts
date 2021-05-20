@@ -5,8 +5,8 @@ import { ApiPropertyOptions } from "./defineApiProperty";
 import {
   getPropertiesMetaData,
   getPropertyBodyClassRefObject,
-  // getPropertyClassRefObject,
 } from "./utils/get-property-metadata";
+import { swaggerOptions } from "./wrapper";
 /**
  * used for building swagger docs object
  */
@@ -99,7 +99,7 @@ const _params = (type, parameters) => (target, name, descriptor) => {
  * @returns 
  */
 const request =
-  (method, path, autoMount = false) =>
+  (method, path, autoMount = swaggerOptions.defaultRequestMounte) =>
   (target, name, descriptor) => {
     method = _.toLower(method);
     descriptor.value.method = method;

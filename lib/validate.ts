@@ -1,25 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 10:50:10
+ * @LastEditTime: 2021-05-20 18:13:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/validate.ts
  */
 import { validate } from "class-validator";
 import { getPropertiesMetaData } from './utils/get-property-metadata'
-// class InputError extends Error {
-//   /**
-//    * Constructor
-//    * @param {string} field the error field in request parameters.
-//    */
-//   constructor(field) {
-//     super(`incorrect field: '${field}', please check again!`);
-//     this["field"] = field;
-//     this["status"] = 400;
-//   }
-// }
-
+import { ApiPropertyOptions } from "./defineApiProperty";
 class CustomError extends Error {
   /**
    * Constructor
@@ -32,10 +21,21 @@ class CustomError extends Error {
   }
 }
 
+const ConvertBase =
+  (fn: Function) => (value: any, typeOption: ApiPropertyOptions) => {
+    if (typeof value === "undefined") return;
+
+    if (typeOption.isArray && Array.isArray(value)) {
+      return value?.map((num) => fn(num));
+    }
+
+    return fn(value);
+  };
+
 const convertFn = {
-  number: Number,
-  string: String,
-  boolean: Boolean
+  number: ConvertBase(Number),
+  string: ConvertBase(String),
+  boolean: ConvertBase(Boolean),
 };
 
 /**
@@ -52,7 +52,7 @@ export default async function (input, expect) {
     const typeObject = typeMaps[key];
     const value = input?.[key];
     schema[key] = value
-      ? convertFn[typeObject.type]?.(value)
+      ? convertFn[typeObject.type]?.(value, typeObject)
       : value ?? typeObject?.default;
   });
 

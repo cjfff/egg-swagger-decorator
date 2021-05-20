@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-19 14:36:32
+ * @LastEditTime: 2021-05-20 13:32:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
@@ -22,6 +22,10 @@ export interface WrapperOptions {
   swaggerJsonEndpoint?: string;
   swaggerHtmlEndpoint?: string;
   makeSwaggerRouter?: boolean;
+  /**
+   * 是否自动挂载 request
+   */
+  defaultRequestMounte?: boolean;
   [param: string]: any;
 }
 
