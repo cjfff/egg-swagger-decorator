@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 13:32:31
+ * @LastEditTime: 2021-05-20 21:34:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
@@ -76,10 +76,8 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
       };
       // 返回的时候处理 responses 中的 schema json
       if (value.responses) {
-        console.log(value.responses);
         (Object.entries(value.responses) as [string, ResponseItem][]).forEach(
-          ([status, value]) => {
-            console.log(status, value);
+          ([, value]) => {
             //  ref 参数复制到 json 中
             if (typeof value.type === "function") {
               Object.assign(
@@ -90,8 +88,6 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
           }
         );
       }
-
-      // console.log(value.responses);
 
       const responses: Response = value.responses
         ? value.responses

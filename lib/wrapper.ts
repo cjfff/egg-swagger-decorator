@@ -185,7 +185,7 @@ const wrapper = (app: Application, options?: WrapperOptions) => {
   handleSwagger(router, opts);
 
   console.log(
-    `swagger-html doc listening at http://127.0.0.1:7001/${opts.prefix}/swagger-html `
+    `swagger-html doc listening at ${getPath("http://127.0.0.1:7001/", `${opts.prefix}/swagger-html`)}`
   );
 };
 const makeSwaggerRouter = (app: Application) =>
