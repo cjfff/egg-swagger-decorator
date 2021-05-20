@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 18:13:52
+ * @LastEditTime: 2021-05-20 20:04:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/validate.ts
@@ -9,7 +9,7 @@
 import { validate } from "class-validator";
 import { getPropertiesMetaData } from './utils/get-property-metadata'
 import { ApiPropertyOptions } from "./defineApiProperty";
-class CustomError extends Error {
+export class CustomError extends Error {
   /**
    * Constructor
    * @param {string} field the error field in request parameters.
