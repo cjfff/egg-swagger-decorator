@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 11:46:04
- * @LastEditTime: 2021-05-19 14:40:29
+ * @LastEditTime: 2021-05-20 10:49:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/defineApiProperty.ts
@@ -20,6 +20,10 @@ export interface ApiPropertyOptions {
   required?: boolean;
   example?: any;
   description?: string;
+  /**
+   * 默认值
+   */
+  default?: any;
 }
 
 export const ApiProperty = (

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-19 17:57:57
+ * @LastEditTime: 2021-05-20 10:50:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/validate.ts
@@ -51,7 +51,9 @@ export default async function (input, expect) {
   Object.keys(typeMaps).forEach((key) => {
     const typeObject = typeMaps[key];
     const value = input?.[key];
-    schema[key] = value ? convertFn[typeObject.type]?.(value) : value;
+    schema[key] = value
+      ? convertFn[typeObject.type]?.(value)
+      : value ?? typeObject?.default;
   });
 
   let throwErrors: string[] = []
