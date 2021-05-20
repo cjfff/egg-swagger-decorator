@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 13:01:39
+ * @LastEditTime: 2021-05-20 13:16:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils.ts
@@ -42,7 +42,7 @@ export const flatClasses = (obj) => {
 
 export const filterClasses = (classes: typeof Controller[] = []) => {
   return classes.filter((item) => {
-    Object.getPrototypeOf(item) === Controller;
+    Object.getPrototypeOf(item).name === Controller.name;
   });
 };
 
