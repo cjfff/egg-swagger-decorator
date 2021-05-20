@@ -4,7 +4,12 @@ import { apiObjects, schemas } from "./decorator";
 import swaggerHTML from "./swaggerHTML";
 import swaggerJSON from "./swaggerJSON";
 import { WrapperOptions } from "./swaggerJSON";
-import { convertPath, getPath, loadSwaggerClassesToContext } from "./utils";
+import {
+  convertPath,
+  getPath,
+  loadSwaggerClassesToContext,
+  formatClasses,
+} from "./utils";
 import validate from "./validate";
 /**
  * allowed http methods
@@ -145,11 +150,15 @@ const handleMap = (
     });
 };
 
+
 const handleMapDir = (app: Application, options: WrapperOptions) => {
   loadSwaggerClassesToContext(app);
   const classes = app.swaggerControllerClasses;
-  Object.keys(classes).forEach((name) => {
-    handleMap(app, classes[name], options);
+
+  const realClasses = formatClasses(classes);
+
+  realClasses.forEach((controllerClass) => {
+    handleMap(app, controllerClass, options);
   });
 };
 
@@ -176,7 +185,7 @@ const wrapper = (app: Application, options?: WrapperOptions) => {
   handleSwagger(router, opts);
 
   console.log(
-    `swagger-html doc listening at http://127.0.0.1:7001/swagger-html `
+    `swagger-html doc listening at http://127.0.0.1:7001/${opts.prefix}/swagger-html `
   );
 };
 const makeSwaggerRouter = (app: Application) =>

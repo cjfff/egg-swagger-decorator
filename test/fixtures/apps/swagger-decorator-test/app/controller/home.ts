@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-19 17:22:21
+ * @LastEditTime: 2021-05-20 12:29:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/controller/home.ts
@@ -27,7 +27,7 @@ const logTime = () => async (ctx: Context, next) => {
 };
 
 export default class HomeController extends Controller {
-  @request("GET", "/")
+  @request("GET", "/", true)
   @middlewares([logTime()])
   @tag
   @query(TestDto)
