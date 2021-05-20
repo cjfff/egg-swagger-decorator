@@ -91,7 +91,6 @@ const _params = (type, parameters) => (target, name, descriptor) => {
   return descriptor;
 };
 
-const request =
 /**
  * 
  * @param method 
@@ -99,6 +98,7 @@ const request =
  * @param autoMount 自动挂载
  * @returns 
  */
+const request =
   (method, path, autoMount = false) =>
   (target, name, descriptor) => {
     method = _.toLower(method);

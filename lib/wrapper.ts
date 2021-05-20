@@ -75,12 +75,18 @@ const handleMap = (
   ControllerClass: typeof Controller,
   options: WrapperOptions
 ) => {
-  // console.log(schemas, "handleMap");
-
   const { prefix = "" } = options;
   const anonymousContext = app.createAnonymousContext();
   const router = app.router;
-  const c: Controller = new ControllerClass(Object.assign(anonymousContext));
+
+  let c: Controller;
+
+  // 扫描的时候有可能不是 controller
+  try {
+    c = new ControllerClass(Object.assign(anonymousContext));
+  } catch (error) {
+    return;;
+  }
   const methods: string[] = Object.getOwnPropertyNames(
     Object.getPrototypeOf(c)
   );
@@ -132,7 +138,7 @@ const handleMap = (
           await c[item]();
         },
       ];
-      
+
       if (options.makeSwaggerRouter || c[item].autoMount) {
         router[method](...chain);
       }
