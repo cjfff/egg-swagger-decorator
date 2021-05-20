@@ -6,6 +6,7 @@ import {
   getPropertiesMetaData,
   getPropertyBodyClassRefObject,
 } from "./utils/get-property-metadata";
+import { setPropertiesMetadata } from './utils/set-property-metadata'
 import { swaggerOptions } from "./wrapper";
 /**
  * used for building swagger docs object
@@ -18,14 +19,7 @@ const _addToApiObject = (target, name, apiObj, content) => {
     (Object.values(content.responses) as ApiPropertyOptions[]).forEach(
       (value) => {
         if (typeof value.type === "function") {
-          // 设置 schema swagger
-          const apiSchema = {
-            type: "object",
-            properties: getPropertiesMetaData(
-              value.type as FunctionConstructor
-            ),
-          };
-          schemas[(value.type as any).name] = apiSchema;
+          setPropertiesMetadata(value)
         }
       }
     );
