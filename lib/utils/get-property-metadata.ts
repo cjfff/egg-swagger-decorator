@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 12:45:33
- * @LastEditTime: 2021-05-19 16:15:29
+ * @LastEditTime: 2021-05-21 02:28:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils/get-property-metadata.ts
@@ -21,13 +21,17 @@ export const getPropertyClassRefObject = (
   obj: FunctionConstructor,
   isArray = false
 ) => {
-  const key = isArray ? "items" : "schema";
+  if (isArray) {
+    return {
+      type: 'array',
+      'items': {
+        $ref: `#/definitions/${obj.name}`,
+      },
+    }
+  }
   return {
-    type: isArray ? "array" : "object",
-    [key]: {
-      $ref: `#/definitions/${obj.name}`,
-    },
-  };
+    '$ref': `#/definitions/${obj.name}`
+  }
 };
 
 export const getPropertyBodyClassRefObject = (obj: FunctionConstructor) => {
