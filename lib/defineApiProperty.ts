@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 11:46:04
- * @LastEditTime: 2021-05-20 10:49:40
+ * @LastEditTime: 2021-05-20 19:35:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/defineApiProperty.ts
@@ -14,8 +14,9 @@ export const DECORATORS = {
 
 export const schemas = {} as any;
 
+type ITypes = "number" | "string" | "boolean";
 export interface ApiPropertyOptions {
-  type?: Type<unknown> | Function | [Function] | string | Record<string, any>;
+  type?: Type<unknown> | Function | [Function] | ITypes | Record<string, any>;
   isArray?: boolean;
   required?: boolean;
   example?: any;
