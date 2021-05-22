@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 23:42:49
- * @LastEditTime: 2021-05-20 23:45:59
+ * @LastEditTime: 2021-05-22 11:28:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils/set-class-metdata.ts
@@ -9,6 +9,7 @@
 import { DECORATORS, ApiPropertyOptions } from '../defineApiProperty'
 import { getPropertyClassRefObject } from './get-property-metadata';
 import { setPropertiesMetadata } from './set-property-metadata';
+import { $enum } from 'ts-enum-util'
 
 export const setClassmetedata = (target: FunctionConstructor, key: string, apiOptions: ApiPropertyOptions) => {
     const propertiesOptions =
@@ -24,6 +25,13 @@ export const setClassmetedata = (target: FunctionConstructor, key: string, apiOp
         } catch (error) {
             console.log('解析错误 ref object');
         }
+    }
+
+    /**
+     * 处理枚举类型
+     */
+    if (typeof apiOptions.enum === 'object' && !Array.isArray(apiOptions.enum)) {
+        apiOptions.enum = $enum(apiOptions.enum).getValues()
     }
 
     propertiesOptions[key] = {

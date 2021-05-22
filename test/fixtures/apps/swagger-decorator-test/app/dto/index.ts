@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-17 00:10:28
- * @LastEditTime: 2021-05-20 21:31:23
+ * @LastEditTime: 2021-05-22 11:26:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/dto/index.ts
@@ -46,6 +46,11 @@ class HelloVo {
   name: string;
 }
 
+enum A {
+  a,
+  b, c
+}
+
 export class AAAVO {
   @ApiProperty({
     type: "string",
@@ -60,9 +65,21 @@ export class AAAVO {
     example: [{
       name: 'aa'
     }],
-    isArray: true
+    isArray: true,
   })
   example?: HelloVo[]
+
+  @ApiProperty({
+    type: 'number',
+    enum: [1, 2, 3]
+  })
+  value1: number;
+
+  @ApiProperty({
+    type: 'number',
+    enum: A
+  })
+  value2: number;
 
 
   @ApiProperty({

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 11:46:04
- * @LastEditTime: 2021-05-20 23:49:13
+ * @LastEditTime: 2021-05-22 11:23:00
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/defineApiProperty.ts
@@ -13,6 +13,9 @@ export const DECORATORS = {
   API_DESC_METDATA: "API_PROPERTY_METADATA",
 } as const;
 
+interface IEnum {
+  [id: number]: string
+}
 
 type ITypes = "number" | "string" | "boolean";
 export interface ApiPropertyOptions {
@@ -21,6 +24,10 @@ export interface ApiPropertyOptions {
   required?: boolean;
   example?: any;
   description?: string;
+  /**
+   * enum 枚举，可以接收枚举类型，或者 number, string
+   */
+  enum?: (string | number)[] | IEnum;
   /**
    * 默认值
    */
