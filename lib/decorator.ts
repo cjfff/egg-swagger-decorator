@@ -114,9 +114,20 @@ const middlewares = (val) => (target, name, descriptor) => {
   return descriptor;
 };
 
+/**
+ * 支持直接传递 type
+ * @param res
+ * @returns
+ */
 const responses =
-  (res: Response = { 200: { description: "success" } }) =>
+  (res?: Response | FunctionConstructor) =>
   (target, name, descriptor) => {
+    let resObj = typeof res === 'function' ? { 200: { description: "success", type: res } } : res
+
+    if (!resObj) {
+      resObj = { 200: { description: "success" } }
+    }
+
     descriptor.value.responses = res;
     _addToApiObject(target, name, apiObjects, { responses: res });
     return descriptor;
