@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 21:34:00
+ * @LastEditTime: 2021-05-25 20:02:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
@@ -9,7 +9,6 @@
 import * as _ from "lodash";
 import init from "./swaggerTemplate";
 import { getPath } from "./utils";
-import { getPropertyClassRefObject } from "./utils/get-property-metadata";
 /**
  * build swagger json from apiObjects
  */
@@ -75,19 +74,19 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
         },
       };
       // 返回的时候处理 responses 中的 schema json
-      if (value.responses) {
-        (Object.entries(value.responses) as [string, ResponseItem][]).forEach(
-          ([, value]) => {
-            //  ref 参数复制到 json 中
-            if (typeof value.type === "function") {
-              Object.assign(
-                value,
-                getPropertyClassRefObject(value.type as FunctionConstructor, value.isArray)
-              );
-            }
-          }
-        );
-      }
+      // if (value.responses) {
+      //   (Object.entries(value.responses) as [string, ResponseItem][]).forEach(
+      //     ([, value]) => {
+      //       //  ref 参数复制到 json 中
+      //       if (typeof value.type === "function") {
+      //         Object.assign(
+      //           value,
+      //           getPropertyClassRefObject(value.type as FunctionConstructor, value.isArray)
+      //         );
+      //       }
+      //     }
+      //   );
+      // }
 
       const responses: Response = value.responses
         ? value.responses

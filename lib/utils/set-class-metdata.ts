@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-20 23:42:49
- * @LastEditTime: 2021-05-25 19:42:06
+ * @LastEditTime: 2021-05-25 20:05:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils/set-class-metdata.ts
@@ -28,7 +28,7 @@ export const setClassmetedata = (target: FunctionConstructor, key: string, apiOp
     }
 
     // 处理字符串的数组类型
-    if (typeof apiOptions.type === 'string' && apiOptions.isArray) {
+    if (typeof apiOptions.type === 'string' && (apiOptions.type as any) !== 'array' && apiOptions.isArray) {
         Object.assign(apiOptions, getPropertyClassTypeObject(apiOptions.type, apiOptions.isArray))
     }
 

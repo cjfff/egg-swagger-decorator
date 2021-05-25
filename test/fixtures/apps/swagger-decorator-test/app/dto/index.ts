@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-17 00:10:28
- * @LastEditTime: 2021-05-22 11:26:04
+ * @LastEditTime: 2021-05-25 20:05:28
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/dto/index.ts
@@ -71,9 +71,10 @@ export class AAAVO {
 
   @ApiProperty({
     type: 'number',
+    isArray: true,
     enum: [1, 2, 3]
   })
-  value1: number;
+  value1: number[];
 
   @ApiProperty({
     type: 'number',

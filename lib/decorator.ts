@@ -5,6 +5,7 @@ import { ApiPropertyOptions } from "./defineApiProperty";
 import {
   getPropertiesMetaData,
   getPropertyBodyClassRefObject,
+  getPropertyClassRefObject,
 } from "./utils/get-property-metadata";
 import { setPropertiesMetadata } from './utils/set-property-metadata'
 import { swaggerOptions } from "./wrapper";
@@ -19,6 +20,10 @@ const _addToApiObject = (target, name, apiObj, content) => {
     (Object.values(content.responses) as ApiPropertyOptions[]).forEach(
       (value) => {
         if (typeof value.type === "function") {
+          Object.assign(
+            value,
+            getPropertyClassRefObject(value.type as FunctionConstructor, value.isArray)
+          );
           setPropertiesMetadata(value)
         }
       }
