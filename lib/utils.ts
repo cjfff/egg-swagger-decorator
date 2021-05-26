@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 13:19:00
+ * @LastEditTime: 2021-05-26 18:24:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils.ts
@@ -33,6 +33,7 @@ function loadSwaggerClassesToContext(app: Application) {
 }
 
 export const flatClasses = (obj) => {
+  if (typeof obj !== 'object') return ''
   return _.flattenDeep(
     Object.values(obj).map((item) => {
       return typeof item === "function" ? item : flatClasses(item);
