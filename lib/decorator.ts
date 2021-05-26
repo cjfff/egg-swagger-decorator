@@ -136,8 +136,8 @@ const responses =
       resObj = { 200: { description: "success" } }
     }
 
-    descriptor.value.responses = res;
-    _addToApiObject(target, name, apiObjects, { responses: res });
+    descriptor.value.responses = resObj;
+    _addToApiObject(target, name, apiObjects, { responses: resObj });
     return descriptor;
   };
 const desc = _.curry(_desc);
