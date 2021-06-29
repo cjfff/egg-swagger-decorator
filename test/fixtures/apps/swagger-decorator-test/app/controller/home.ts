@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-20 21:33:35
+ * @LastEditTime: 2021-06-29 14:57:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/controller/home.ts
@@ -16,7 +16,7 @@ import {
   body,
   path,
 } from "../../../../../../lib";
-import { AAAVO, TestDto, PathParamsVo } from "../dto";
+import { AAAVO, TestDto, PathParamsVO } from "../dto";
 
 const tag = tags(["Home"]);
 
@@ -31,13 +31,7 @@ export default class HomeController extends Controller {
   @middlewares([logTime()])
   @tag
   @query(TestDto)
-  // @body(TestDto)
-  @responses({
-    200: {
-      description: "success",
-      type: AAAVO,
-    },
-  })
+  @responses(AAAVO)
   public async index() {
     const { ctx, service } = this;
     ctx.body = await service.test.sayHi("egg");
@@ -47,7 +41,6 @@ export default class HomeController extends Controller {
   @middlewares([logTime()])
   @tag
   @query(TestDto)
-  // @body(TestDto)
   @responses({
     200: {
       description: "success",
@@ -63,7 +56,7 @@ export default class HomeController extends Controller {
   @middlewares([logTime()])
   @tag
   @body(TestDto)
-  @path(PathParamsVo)
+  @path(PathParamsVO)
   public async post() {
     const { ctx, service } = this;
     ctx.body = await service.test.sayHi("egg");
@@ -71,7 +64,7 @@ export default class HomeController extends Controller {
 
   @request("get", "/get/:id")
   @tag
-  @path(PathParamsVo)
+  @path(PathParamsVO)
   public async notused() {
     const { ctx, service } = this;
     ctx.body = await service.test.sayHi("egg");

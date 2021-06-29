@@ -5,7 +5,7 @@
 
 
 ```bash
-npm install egg-swagger-decorator
+yarn add @grfe/egg-swagger-decorator --registry=http://r.npm.guorou.net/
 ```
 
 ## Introduction
@@ -21,7 +21,7 @@ based on [Swagger OpenAPI Specification 2.0](https://github.com/OAI/OpenAPI-Spec
 ```
 // using commonds below to start and test the example server
 
-git clone https://github.com/Cody2333/egg-swagger-decorator.git
+git clone http://git.shensz.local/FE/egg-swagger-decorator
 
 cd egg-swagger-decorator
 
@@ -57,7 +57,8 @@ export default (app: Application) => {
     title: 'foo',
     version: 'v1.0.0',
     description: 'bar',
-
+    // autoMount 是否开启
+    // defaultRequestMounte: true
   });
   makeSwaggerRouter(app);
 };
@@ -66,62 +67,84 @@ export default (app: Application) => {
 
 #### using decorator to make api definition
 
-```
+```ts
 // controller/test.ts
-
-import { Controller } from 'egg';
-import { request, summary, query, path, body, tags } from 'egg-swagger-decorator';
-
-const testTag = tags(['test']);
-
-const userSchema = {
-  name: { type: 'string', required: true },
-  gender: { type: 'string', required: false, example: 'male' },
-  groups: {
-    type: 'array',
-    required: true,
-    items: { type: 'string', example: 'group1' }
-  }
-};
-
-export default class Test extends Controller{
-  @request('get', '/users')
-  @summary('get user list')
+import { Controller, Context } from "egg";
+import {
+  request,
+  summary,
+  path,
+  tags,
+  responses,
+  middlewares,
+  description,
+} from "@grfe/egg-swagger-decorator";
+import { PathParamsVO, IGetUserResultVO, IUserListVO } from "../dto";
+const testTag = tags(["test"])
+export default class Test extends Controller {
+  @request("get", "/users")
+  @description("get user list")
   @testTag
-  @query({
-    type: { type: 'number', required: true, default: 1, description: 'type' }
+  @middlewares(async (ctx: Context, next) => {
+    ctx.logger.info("mid");
+    await next();
   })
+  @responses(IUserListVO)
   public async getUsers() {
     const { ctx } = this;
-    const users = [{user1: {name: 'xxx'}}]
+    const users = [{ name: "cjfff" }];
     ctx.body = { users };
   }
 
-  @request('get', '/users/{id}')
-  @summary('get user info by id')
+  @request("get", "/users/{id}")
+  @summary("get user info by id")
   @testTag
-  @path({
-    id: { type: 'number', required: true, default: 1, description: 'id' }
-  })
+  @path(PathParamsVO)
+  @responses(IGetUserResultVO)
   public async getUser() {
     const { id } = this.ctx.params;
-    const user = {user1: {id, name: 'xxx'}}
-    this.ctx.body = { user };
-  }
-
-  @request('post', '/users')
-  @testTag
-  @body(userSchema)
-  public async postUser() {
-    const body = this.ctx.request.body;
-    this.ctx.body = { result: body };
-  }
-
-  public async temp(ctx) {
-    ctx.body = { result: 'success' };
+    this.ctx.body = { id };
   }
 }
 
+```
+
+dto define
+```ts
+// ../dto.ts
+export class PathParamsVO {
+  @ApiProperty({
+    type: "number",
+    description: "用户id",
+    example: 10086,
+  })
+  @IsNumber({ maxDecimalPlaces: 1000 }, { message: "id 必须是数字2323232" })
+  id: number;
+}
+
+
+export class IUserVO {
+  @ApiProperty({
+    type: 'string'
+  })
+  name: string;
+}
+
+export class IUserListVO {
+  @ApiProperty({
+    type: IUserVO,
+    isArray: true
+  })
+  users: IUserVO[]
+}
+
+
+export class IGetUserResultVO {
+  @ApiProperty({
+    type: 'number'
+  })
+  id: number;
+}
 ```
 
 #### avaliable annotations:

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-17 00:10:28
- * @LastEditTime: 2021-05-25 20:05:28
+ * @LastEditTime: 2021-06-29 14:55:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/dto/index.ts
@@ -93,12 +93,36 @@ export class AAAVO {
   test?: HelloVo
 }
 
-export class PathParamsVo {
+export class PathParamsVO {
   @ApiProperty({
     type: "number",
     description: "用户id",
     example: 10086,
   })
   @IsNumber({ maxDecimalPlaces: 1000 }, { message: "id 必须是数字2323232" })
+  id: number;
+}
+
+
+export class IUserVO {
+  @ApiProperty({
+    type: 'string'
+  })
+  name: string;
+}
+
+export class IUserListVO {
+  @ApiProperty({
+    type: IUserVO,
+    isArray: true
+  })
+  users: IUserVO[]
+}
+
+
+export class IGetUserResultVO {
+  @ApiProperty({
+    type: 'number'
+  })
   id: number;
 }
