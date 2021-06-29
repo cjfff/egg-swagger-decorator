@@ -1,4 +1,4 @@
-# egg-swagger-decorator [npm-url]
+# egg-swagger-decorator [npm-url](http://r.npm.guorou.net/-/web/detail/@grfe/egg-swagger-decorator)
 > using decorator to auto generate swagger json docs
 
 ## Installation
