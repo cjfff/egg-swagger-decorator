@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-25 20:02:10
+ * @LastEditTime: 2021-07-01 18:39:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
@@ -88,9 +88,19 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
       //   );
       // }
 
-      const responses: Response = value.responses
+      let responses: Response = value.responses
         ? value.responses
         : defaultResp;
+
+      Object.keys(responses).forEach(key => {
+        if (responses[key].$ref) {
+          responses[key] = {
+            schema: {
+              $ref: responses[key].$ref
+            }
+          }
+        }
+      })
 
       const {
         query = [],

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 12:45:33
- * @LastEditTime: 2021-07-01 18:12:43
+ * @LastEditTime: 2021-07-01 18:36:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils/get-property-metadata.ts
@@ -30,9 +30,7 @@ export const getPropertyClassRefObject = (
     }
   }
   return {
-    schema: {
-      '$ref': `#/definitions/${obj.name}`
-    }
+    '$ref': `#/definitions/${obj.name}`
   }
 };
 
