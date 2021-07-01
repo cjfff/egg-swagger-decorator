@@ -13,7 +13,7 @@
   "scripts": {
     "start": "egg-scripts start --baseDir=./test/fixtures/apps/swagger-decorator-test --title=egg-server-tt",
     "stop": "egg-scripts stop --title=egg-server-tt",
-    "dev": "egg-bin dev --baseDir=./test/fixtures/apps/swagger-decorator-test -r egg-ts-helper/register",
+    "dev": "egg-bin dev --baseDir=./test/fixtures/apps/example -r egg-ts-helper/register",
     "debug": "egg-bin debug --baseDir=./test/fixtures/apps/swagger-decorator-test -r egg-ts-helper/register",
     "test-local": "egg-bin test -r egg-ts-helper/register",
     "test": "npm run lint -- --fix && npm run test-local",
@@ -45,7 +45,7 @@
     "egg-ci": "^1.18.0",
     "egg-mock": "^3.17.0",
     "egg-scripts": "^2.13.0",
-    "egg-ts-helper": "^1.4.2",
+    "egg-ts-helper": "^1.25.9",
     "tslib": "^1.9.0",
     "tslint": "^4.0.0",
     "typescript": "^4.2.4"
