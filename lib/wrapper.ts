@@ -181,11 +181,11 @@ const wrapper = (app: Application, options?: WrapperOptions) => {
   if (opts.makeSwaggerRouter) {
     handleMapDir(app, opts);
   }
-  
+
   handleSwagger(router, opts);
 
   console.log(
-    `swagger-html doc listening at ${getPath("http://127.0.0.1:7001/", `${opts.prefix}/swagger-html`)}`
+    `swagger-html doc listening at ${getPath(`http://127.0.0.1:${process.env.port || '7001'}`, `${opts.prefix}/swagger-html`)}`
   );
 };
 const makeSwaggerRouter = (app: Application) =>
