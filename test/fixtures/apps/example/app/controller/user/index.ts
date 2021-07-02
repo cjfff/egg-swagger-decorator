@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-01 23:23:33
- * @LastEditTime: 2021-07-02 00:38:20
+ * @LastEditTime: 2021-07-02 20:37:14
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/controller/user/index.ts
@@ -10,7 +10,7 @@ import { Controller } from 'egg'
 import { request, path, responses, tags, body, summary, query } from '../../../../../../../lib'
 import * as DTO from './pojo'
 
-const tag = tags(['用户模块'])
+const tag = tags(['users'])
 
 export default class UserController extends Controller {
 

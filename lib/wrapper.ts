@@ -50,7 +50,6 @@ const handleSwagger = (app: Application, options: WrapperOptions) => {
     swaggerHtmlEndpoint = "/swagger-html",
   } = options;
 
-
   const { router } = app
 
   const swaggerHtmlEndpointPath = getPath(prefix, swaggerHtmlEndpoint);

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-07-01 18:39:29
+ * @LastEditTime: 2021-07-02 20:39:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
@@ -16,7 +16,7 @@ export interface WrapperOptions {
   title?: string;
   description?: string;
   version?: string;
-  prefix?: string;
+  basePath?: string;
   swaggerOptions?: any;
   swaggerJsonEndpoint?: string;
   swaggerHtmlEndpoint?: string;
@@ -47,6 +47,7 @@ export interface Response {
   [name: number]: ResponseItem;
 }
 const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
+
   const {
     title = "API DOC",
     description = "API DOC",
@@ -73,20 +74,6 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
           description: "success",
         },
       };
-      // 返回的时候处理 responses 中的 schema json
-      // if (value.responses) {
-      //   (Object.entries(value.responses) as [string, ResponseItem][]).forEach(
-      //     ([, value]) => {
-      //       //  ref 参数复制到 json 中
-      //       if (typeof value.type === "function") {
-      //         Object.assign(
-      //           value,
-      //           getPropertyClassRefObject(value.type as FunctionConstructor, value.isArray)
-      //         );
-      //       }
-      //     }
-      //   );
-      // }
 
       let responses: Response = value.responses
         ? value.responses
@@ -131,7 +118,7 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
         tags,
         security,
       };
-      
+
     })
     .value();
 
