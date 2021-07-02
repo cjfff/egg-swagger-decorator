@@ -185,9 +185,9 @@ const wrapper = (app: Application, options?: WrapperOptions) => {
   }
 
   handleSwagger(app, opts);
-
+  const [, port] = process.env?.npm_lifecycle_script?.match(/--port\s+(\d+)/) ?? []
   console.log(
-    `swagger-html doc listening at ${getPath(`http://127.0.0.1:${process.env.port || '7001'}`, `${opts.prefix}/swagger-html`)}`
+    `swagger-html doc listening at ${getPath(`http://127.0.0.1:${port || '7001'}`, `${opts.prefix}/swagger-html`)}`
   );
 };
 const makeSwaggerRouter = (app: Application) =>
