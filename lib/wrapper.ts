@@ -1,4 +1,4 @@
-import { Application, Controller, Router } from "egg";
+import { Application, Controller } from "egg";
 import * as _ from "lodash";
 import { apiObjects, schemas } from "./decorator";
 import swaggerHTML from "./swaggerHTML";
@@ -43,12 +43,15 @@ const validator = (parameters: Parameters) => async (ctx, next) => {
   await next();
 };
 
-const handleSwagger = (router: Router, options: WrapperOptions) => {
+const handleSwagger = (app: Application, options: WrapperOptions) => {
   const {
     prefix = "",
     swaggerJsonEndpoint = "/swagger-json",
     swaggerHtmlEndpoint = "/swagger-html",
   } = options;
+
+
+  const { router } = app
 
   const swaggerHtmlEndpointPath = getPath(prefix, swaggerHtmlEndpoint);
   const swaggerJsonEndpointPath = getPath(prefix, swaggerJsonEndpoint);
@@ -177,12 +180,11 @@ const wrapper = (app: Application, options?: WrapperOptions) => {
   // 赋值全局 options
   Object.assign(swaggerOptions, opts);
 
-  const { router } = app;
   if (opts.makeSwaggerRouter) {
     handleMapDir(app, opts);
   }
 
-  handleSwagger(router, opts);
+  handleSwagger(app, opts);
 
   console.log(
     `swagger-html doc listening at ${getPath(`http://127.0.0.1:${process.env.port || '7001'}`, `${opts.prefix}/swagger-html`)}`
