@@ -8,7 +8,7 @@
  */
 import { schemas } from '../decorator'
 import { getPropertiesMetaData } from './get-property-metadata'
-import { ApiPropertyOptions } from '../defineApiProperty'
+import { ApiPropertyOptions } from './defineApiProperty'
 
 export const setPropertiesMetadata = (value: ApiPropertyOptions) => {
     const apiSchema = {

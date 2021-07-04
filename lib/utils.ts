@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-26 18:24:04
+ * @LastEditTime: 2021-07-04 22:11:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils.ts
@@ -9,14 +9,6 @@
 import { Application, Controller } from "egg";
 import * as _path from "path";
 import * as _ from "lodash";
-/**
- * eg. /api/{id} -> /api/:id
- * @param {String} path
- */
-const convertPath = (path) => {
-  const re = new RegExp("{(.*?)}", "g");
-  return path.replace(re, ":$1");
-};
 
 const getPath = (prefix: string, path: string) =>
   `${prefix}${path}`.replace("//", "/");
@@ -51,4 +43,9 @@ export const formatClasses = (obj) => {
   return filterClasses(flatClasses(obj));
 };
 
-export { convertPath, getPath, loadSwaggerClassesToContext };
+export const getPort = () => {
+  const [, port] = process.env?.npm_lifecycle_script?.match(/--port\s+(\d+)/) ?? []
+  return port ?? '7001'
+}
+
+export { getPath, loadSwaggerClassesToContext };

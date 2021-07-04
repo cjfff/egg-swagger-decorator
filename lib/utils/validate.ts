@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-05-25 20:38:00
+ * @LastEditTime: 2021-07-04 22:05:46
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/validate.ts
  */
 import { validate } from "class-validator";
-import { getPropertiesMetaData } from './utils/get-property-metadata'
+import { getPropertiesMetaData } from './get-property-metadata'
 import { ApiPropertyOptions } from "./defineApiProperty";
 export class CustomError extends Error {
   /**
@@ -57,7 +57,7 @@ export default async function (input, expect) {
   });
 
   let throwErrors: string[] = []
-  
+
   await validate(schema).then((errors) => {
     const strings = errors.map((item) => {
       return (item.constraints ? Object.values(item.constraints).join('\n') : '') as string;
@@ -68,6 +68,6 @@ export default async function (input, expect) {
   if (throwErrors.length) {
     throw new CustomError(throwErrors);
   };
-  
+
   return schema;
 }

@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils/get-property-metadata.ts
  */
-import { DECORATORS } from "../defineApiProperty";
+import { DECORATORS } from "./defineApiProperty";
 
 export function getPropertiesMetaData(obj: FunctionConstructor) {
   const apiOptions = Reflect.getMetadata(

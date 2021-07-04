@@ -2,7 +2,7 @@
 import {mock} from 'egg-mock/bootstrap';
 import * as assert from 'assert';
 import {getPath, convertPath, loadSwaggerClassesToContext} from '../lib/utils';
-import validate from '../lib/validate';
+import validate from '../lib/utils/validate';
 import {Context} from 'egg';
 
 describe('test/app/lib.test.ts', () => {
@@ -229,7 +229,7 @@ describe('test/app/lib.test.ts', () => {
           assert(err.message === "incorrect field: 'foo', please check again!")
         }
       });
-      
+
       it('should throw error when enum not a array', () => {
         const input = { foo: '1' };
         const expect = {

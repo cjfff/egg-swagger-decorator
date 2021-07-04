@@ -1,7 +1,7 @@
 import * as _ from "lodash";
 
-import { Response } from "./swaggerJSON";
-import { ApiPropertyOptions } from "./defineApiProperty";
+import { Response } from "./utils/swaggerJSON";
+import { ApiPropertyOptions } from "./utils/defineApiProperty";
 import {
   getPropertiesMetaData,
   getPropertyBodyClassRefObject,
@@ -9,6 +9,7 @@ import {
 } from "./utils/get-property-metadata";
 import { setPropertiesMetadata } from './utils/set-property-metadata'
 import { swaggerOptions } from "./wrapper";
+import { IMethods } from './type'
 /**
  * used for building swagger docs object
  */
@@ -91,16 +92,16 @@ const _params = (type, parameters) => (target, name, descriptor) => {
 };
 
 /**
- * 
- * @param method 
- * @param path 
+ *
+ * @param method
+ * @param path
  * @param autoMount 自动挂载
- * @returns 
+ * @returns
  */
 const request =
-  (method, path, autoMount = swaggerOptions.defaultRequestMounte) =>
+  (method: IMethods, path: string, autoMount = swaggerOptions.defaultRequestMounte) =>
   (target, name, descriptor) => {
-    method = _.toLower(method);
+    method = _.toLower(method) as IMethods;
     descriptor.value.method = method;
     descriptor.value.path = path;
     descriptor.value.autoMount = autoMount;
@@ -171,7 +172,6 @@ export {
   request,
   summary,
   params,
-  desc,
   description,
   query,
   path,

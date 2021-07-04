@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-05-19 11:46:04
- * @LastEditTime: 2021-05-22 11:23:00
+ * @LastEditTime: 2021-07-04 22:15:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/defineApiProperty.ts
  */
 import { Type } from "./swaggerJSON";
-import { setClassmetedata } from './utils/set-class-metdata'
+import { setClassmetedata } from './set-class-metdata'
 
 export const DECORATORS = {
   API_DESC_METDATA: "API_PROPERTY_METADATA",

@@ -1,13 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2021-07-01 23:23:33
- * @LastEditTime: 2021-07-02 20:37:14
+ * @LastEditTime: 2021-07-04 22:33:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/controller/user/index.ts
  */
 import { Controller } from 'egg'
-import { request, path, responses, tags, body, summary, query } from '../../../../../../../lib'
+import { request, path, responses, tags, body, summary, query, description } from '../../../../../../../lib'
 import * as DTO from './pojo'
 
 const tag = tags(['users'])
@@ -18,6 +18,7 @@ export default class UserController extends Controller {
   @request('get', '/user/:id')
   @path(DTO.UserPathVO)
   @summary('获取用户详情')
+  @description('描述')
   @responses(DTO.IUserResponse)
   getUserById() {
     const { id } = this.ctx.validatedParams as DTO.UserPathVO

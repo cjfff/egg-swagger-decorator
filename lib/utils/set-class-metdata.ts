@@ -6,7 +6,7 @@
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/utils/set-class-metdata.ts
  */
-import { DECORATORS, ApiPropertyOptions } from '../defineApiProperty'
+import { DECORATORS, ApiPropertyOptions } from './defineApiProperty'
 import { getPropertyClassRefObject, getPropertyClassTypeObject } from './get-property-metadata';
 import { setPropertiesMetadata } from './set-property-metadata';
 import { $enum } from 'ts-enum-util'

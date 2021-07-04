@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-07-02 20:39:49
+ * @LastEditTime: 2021-07-04 21:52:06
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
  */
 import * as _ from "lodash";
 import init from "./swaggerTemplate";
-import { getPath } from "./utils";
+import { getPath } from "../utils";
 /**
  * build swagger json from apiObjects
  */
@@ -16,7 +16,7 @@ export interface WrapperOptions {
   title?: string;
   description?: string;
   version?: string;
-  basePath?: string;
+  prefix?: string;
   swaggerOptions?: any;
   swaggerJsonEndpoint?: string;
   swaggerHtmlEndpoint?: string;
@@ -29,12 +29,10 @@ export interface WrapperOptions {
 }
 
 export interface Type<T> extends Function {
-  new (...args: any[]): T;
+  new(...args: any[]): T;
 }
 
 export type IBasicTypes = "string" | "number" | "boolean";
-// | 'array'
-// | 'date'
 
 export interface ResponseItem {
   description?: string;
@@ -49,8 +47,8 @@ export interface Response {
 const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
 
   const {
-    title = "API DOC",
-    description = "API DOC",
+    title = "",
+    description = "",
     version = "1.0.0",
     prefix = "",
     swaggerOptions = {},
