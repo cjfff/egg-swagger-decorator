@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-02 20:50:18
- * @LastEditTime: 2021-07-04 22:23:20
+ * @LastEditTime: 2021-07-04 23:20:45
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/wrapper.ts
@@ -30,7 +30,7 @@ const wrapper = (app: Application, options?: WrapperOptions) => {
   };
 
   Object.assign(opts, options || {}, {
-    fullPrefix: `${options?.swaggerOptions?.basePath ?? ''}${options?.prefix ?? ''}`,
+    fullPrefix: `${options?.basePath ?? ''}${options?.prefix ?? ''}`,
   });
   // 赋值全局 options
   Object.assign(swaggerOptions, opts);

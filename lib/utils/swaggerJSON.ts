@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-05-16 22:58:12
- * @LastEditTime: 2021-07-04 21:52:06
+ * @LastEditTime: 2021-07-04 23:23:27
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/lib/swaggerJSON.ts
@@ -17,6 +17,7 @@ export interface WrapperOptions {
   description?: string;
   version?: string;
   prefix?: string;
+  basePath?: string;
   swaggerOptions?: any;
   swaggerJsonEndpoint?: string;
   swaggerHtmlEndpoint?: string;
@@ -54,7 +55,11 @@ const swaggerJSON = (options: WrapperOptions, apiObjects, schemas: any) => {
     swaggerOptions = {},
   } = options;
 
-  const resultJSON = init(title, description, version, swaggerOptions, schemas);
+  const resultJSON = init({
+    title, description, version, options, schemas,
+    basePath: options.basePath ?? '',
+    ...swaggerOptions
+  });
 
   _.chain(apiObjects)
     .forEach((value) => {
