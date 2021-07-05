@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-01 23:23:33
- * @LastEditTime: 2021-07-04 22:33:53
+ * @LastEditTime: 2021-07-04 23:41:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /egg-swagger-decorator/test/fixtures/apps/swagger-decorator-test/app/controller/user/index.ts
@@ -15,7 +15,7 @@ const tag = tags(['users'])
 export default class UserController extends Controller {
 
   @tag
-  @request('get', '/user/:id')
+  @request('get', '/1/user/:id')
   @path(DTO.UserPathVO)
   @summary('获取用户详情')
   @description('描述')
@@ -32,7 +32,7 @@ export default class UserController extends Controller {
   }
 
   @tag
-  @request('post', '/user')
+  @request('post', '/1/user')
   @summary('创建用户')
   @body(DTO.ICreateUserParamsVO)
   @responses(DTO.ICreateResponseVO)
@@ -41,7 +41,7 @@ export default class UserController extends Controller {
   }
 
   @tag
-  @request('get', '/user')
+  @request('get', '/1/user')
   @summary('获取用户列表')
   @query(DTO.IGetUserListQueryVO)
   @responses(DTO.IGetUserListResponseVO)
@@ -59,7 +59,7 @@ export default class UserController extends Controller {
   }
 
   @tag
-  @request('put', '/user/:id')
+  @request('put', '/1/user/:id')
   @path(DTO.UserPathVO)
   @summary('编辑用户')
   @body(DTO.ICreateUserParamsVO)
