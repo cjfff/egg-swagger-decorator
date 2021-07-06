@@ -5,7 +5,7 @@
 
 
 ```bash
-yarn add @grfe/egg-swagger-decorator --registry=http://r.npm.guorou.net/
+yarn add @chenxxx/egg-swagger-decorator
 ```
 
 ## Introduction
@@ -21,7 +21,7 @@ based on [Swagger OpenAPI Specification 2.0](https://github.com/OAI/OpenAPI-Spec
 ```
 // using commonds below to start and test the example server
 
-git clone http://git.shensz.local/FE/egg-swagger-decorator
+git clone https://github.com/cjfff/egg-swagger-decorator.git
 
 cd egg-swagger-decorator
 
@@ -196,4 +196,7 @@ responses
  © MIT
 
 
-[npm-url]: https://npmjs.org/package/egg-swagger-decorator
+[npm-url]: https://npmjs.org/package/@chenxxx/egg-swagger-decorator
+
+
+thank for https://github.com/Cody2333/egg-swagger-decorator

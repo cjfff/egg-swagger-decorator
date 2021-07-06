@@ -1,5 +1,5 @@
 {
-  "name": "@grfe/egg-swagger-decorator",
+  "name": "@chenxxx/egg-swagger-decorator",
   "version": "0.3.0",
   "description": "using decorator to make router definitions and automatically generate swagger doc for egg.js",
   "main": "./dist/index.js",
@@ -56,7 +56,7 @@
   "ci": {
     "version": "8"
   },
-  "repository": "http://git.shensz.local/cjfff/egg-swagger-decorator",
+  "repository": "https://github.com/cjfff/egg-swagger-decorator",
   "eslintIgnore": [
     "coverage"
   ],
@@ -67,6 +67,9 @@
     "eggPlugin",
     "egg-plugin"
   ],
-  "author": "Cjfff",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": "cjfff",
   "license": "MIT"
 }
