@@ -78,7 +78,7 @@ import {
   responses,
   middlewares,
   description,
-} from "@grfe/egg-swagger-decorator";
+} from "@chenxxx/egg-swagger-decorator";
 import { PathParamsVO, IGetUserResultVO, IUserListVO } from "../dto";
 const testTag = tags(["test"])
 export default class Test extends Controller {
