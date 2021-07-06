@@ -1,4 +1,4 @@
-# egg-swagger-decorator [npm-url](http://r.npm.guorou.net/-/web/detail/@grfe/egg-swagger-decorator)
+# egg-swagger-decorator [npm-url](https://www.npmjs.com/package/egg-swagger-decorator)
 > using decorator to auto generate swagger json docs
 
 ## Installation
@@ -190,7 +190,7 @@ responses
 
 ##### runing the project and it will generate docs through swagger ui
 
-![image.png](http://upload-images.jianshu.io/upload_images/2563527-4b6ed895183a0055.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![image.png](https://raw.githubusercontent.com/cjfff/egg-swagger-decorator/master/image/example.png)
 ## License
 
  © MIT
