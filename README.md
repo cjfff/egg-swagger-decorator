@@ -60,7 +60,6 @@ export default (app: Application) => {
     // autoMount 是否开启
     // defaultRequestMounte: true
   });
-  makeSwaggerRouter(app);
 };
 
 ```
