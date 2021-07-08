@@ -189,6 +189,11 @@ responses
 
 ![image.png](https://raw.githubusercontent.com/cjfff/egg-swagger-decorator/master/image/example.png)
 
+
+## Other
+if your ide is the vscode. you can use the vscode to use a json schema generation the class schema for the swagger schema. [marketplace](https://marketplace.visualstudio.com/items?itemName=cjfff.json2class)
+
+
 [npm-url]: https://npmjs.org/package/@chenxxx/egg-swagger-decorator
 
 ## thank for
