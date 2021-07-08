@@ -185,17 +185,16 @@ responses
 // responses is optional
 ```
 
-
-
 ##### runing the project and it will generate docs through swagger ui
 
 ![image.png](https://raw.githubusercontent.com/cjfff/egg-swagger-decorator/master/image/example.png)
-## License
-
- © MIT
-
 
 [npm-url]: https://npmjs.org/package/@chenxxx/egg-swagger-decorator
 
+## thank for
+https://github.com/Cody2333/egg-swagger-decorator
 
-thank for https://github.com/Cody2333/egg-swagger-decorator
+
+## License
+
+ © MIT
